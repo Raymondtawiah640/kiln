@@ -1,0 +1,323 @@
+:root {
+    --deep-indigo: #4b0082;
+    --royal-purple: #6a0dad;
+    --soft-violet: #9370db;
+    --lavender: #e6e6fa;
+    --light-lavender: #f8f5ff;
+    --orchid: #da70d6;
+    --dark-orchid: #9932cc;
+    --blue-violet: #8a2be2;
+    --medium-purple: #9370db;
+    --white: #ffffff;
+    --success-green: #4caf50;
+    --error-red: #f44336;
+    --warning-orange: #ff9800;
+    --info-blue: #2196f3;
+    --danger: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-lavender);
+    color: var(--deep-indigo);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, var(--deep-indigo), var(--royal-purple));
+    color: white;
+    padding: 1.5rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 75% 30%, rgba(218, 112, 214, 0.2), transparent 70%);
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orchid), var(--blue-violet));
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.flash-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    background-color: var(--success-green);
+    color: white;
+    font-weight: 500;
+}
+
+.flash-message[style*="danger"] {
+    background-color: var(--danger);
+}
+
+.filter-section {
+    background-color: var(--lavender);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--royal-purple);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--soft-violet);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--orchid);
+    box-shadow: 0 0 0 3px rgba(218, 112, 214, 0.2);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--orchid);
+    color: white;
+    box-shadow: 0 2px 6px rgba(218, 112, 214, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-orchid);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(218, 112, 214, 0.4);
+}
+
+/* Update the btn-outline class */
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--orchid);
+    color: var(--orchid);
+    padding: calc(0.75rem - 2px) calc(1.5rem - 2px); /* Adjust for border */
+    text-decoration: none; /* Ensure underline doesn't appear */
+    display: inline-block; /* Change from inline-block to ensure proper spacing */
+}
+
+.btn-outline:hover {
+    background-color: var(--orchid);
+    color: white;
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* Add this to ensure anchor tags behave like buttons */
+a.btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.btn:hover {
+    text-decoration: none;
+}
+.returns-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.returns-table th, 
+.returns-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--soft-violet);
+}
+
+.returns-table th {
+    background-color: var(--royal-purple);
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.returns-table tr:nth-child(even) {
+    background-color: rgba(147, 112, 219, 0.1);
+}
+
+.status-pending {
+    color: var(--warning-orange);
+    font-weight: 600;
+}
+
+.status-approved {
+    color: var(--success-green);
+    font-weight: 600;
+}
+
+.status-rejected {
+    color: var(--error-red);
+    font-weight: 600;
+}
+
+.status-processed {
+    color: var(--info-blue);
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--royal-purple);
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--dark-orchid);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .filter-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+    
+    .returns-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .returns-table th, 
+    .returns-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .modal-content {
+        margin: 15% auto;
+        padding: 1rem;
+    }
+}

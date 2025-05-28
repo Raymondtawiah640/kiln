@@ -1,0 +1,207 @@
+:root {
+    --deep-indigo: #4b0082;
+    --royal-purple: #6a0dad;
+    --soft-violet: #9370db;
+    --lavender: #e6e6fa;
+    --light-lavender: #f8f5ff;
+    --orchid: #da70d6;
+    --dark-orchid: #9932cc;
+    --blue-violet: #8a2be2;
+    --medium-purple: #9370db;
+    --white: #ffffff;
+    --light-gray: #f0f0f5;
+    --text-dark: #2d1b4e;
+    --text-medium: #4a3a6e;
+    --text-light: #6d5b8a;
+    --success: #4cc9f0;
+    --warning: #f8961e;
+    --danger: #f72585;
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(75, 0, 130, 0.1);
+    --shadow-md: 0 6px 18px rgba(75, 0, 130, 0.15);
+    --shadow-lg: 0 12px 24px rgba(75, 0, 130, 0.2);
+    --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-left: 150px;
+    background-color: var(--light-lavender);
+}
+
+/* Page Title */
+h1 {
+    margin: 0;
+    z-index: 2;
+    position: relative;
+    color: var(--white);
+    font-size: 2.5em;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+/* Background Image Header */
+.background {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Background Text in Header */
+.background p {
+    position: relative;
+    z-index: 2;
+    color: var(--light-gray);
+    font-size: 1.2em;
+    text-align: center;
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 0 15px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Overlay */
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Wishlist Container */
+.wishlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Wishlist Item Card */
+.wishlist-item {
+    background-color: var(--white);
+    border: 1px solid var(--lavender);
+    padding: 15px;
+    width: 300px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.wishlist-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+/* Product Link */
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Product Image */
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+/* Product Name */
+.product-name {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: var(--royal-purple);
+}
+
+/* Product Description */
+.product-description {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin-top: 10px;
+}
+
+/* Product Price and Stock */
+.product-price,
+.product-stock {
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--blue-violet);
+}
+
+/* Remove Wishlist Button */
+.remove-wishlist {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: var(--danger);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.remove-wishlist:hover {
+    background-color: var(--royal-purple);
+}
+
+/* Empty Wishlist Message */
+p {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--text-medium);
+    margin-top: 50px;
+}
+
+/* Anchor Links */
+a {
+    color: var(--soft-violet);
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .wishlist-item {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-left: 0;
+    }
+
+    .wishlist-container {
+        justify-content: center;
+    }
+
+    .wishlist-item {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wishlist-item {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}

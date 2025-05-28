@@ -1,0 +1,346 @@
+:root {
+    --nav-width: 280px;
+    --transition-speed: 0.3s;
+    --primary-color: #4b0082; /* Deep Indigo */
+    --secondary-color: #6a0dad; /* Royal Purple */
+    --accent-color: #9370db; /* Soft Violet */
+    --text-color: #e6e6fa; /* Lavender */
+    --hover-color: #8a2be2; /* Blue Violet */
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --highlight-color: #da70d6; /* Orchid */
+
+    /* Dark mode variables */
+    --dark-bg: #1a1a1a;
+    --dark-primary: #3a0070;
+    --dark-secondary: #52008a;
+    --dark-accent: #7a3ebf;
+    --dark-text: #dcdcdc;
+    --dark-overlay: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode {
+    --primary-color: var(--dark-primary);
+    --secondary-color: var(--dark-secondary);
+    --accent-color: var(--dark-accent);
+    --text-color: var(--dark-text);
+    --overlay-color: var(--dark-overlay);
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+/* Hamburger / menu toggle button */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+/* Hamburger icon animation */
+.menu-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.open i.fa-bars {
+    transform: rotate(90deg);
+}
+
+.menu-toggle.open i.fa-times {
+    transform: rotate(0deg);
+}
+
+.menu-toggle:hover {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+    transform: scale(1.1);
+}
+
+.menu-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+/* Sidebar nav */
+nav {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    height: 100vh;
+    width: var(--nav-width);
+    position: fixed;
+    top: 0;
+    left: calc(-1 * var(--nav-width));
+    transition: left var(--transition-speed) ease-in-out;
+    z-index: 1000;
+    padding-top: 20px;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    border-right: 4px solid var(--accent-color);
+    overflow-y: auto;
+}
+
+nav.show {
+    left: 0;
+}
+
+/* Nav header */
+.nav-header {
+    padding: 15px;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.nav-header i {
+    margin-right: 10px;
+    color: var(--highlight-color);
+}
+
+/* Nav links */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    margin: 5px 10px;
+    border-radius: 8px;
+}
+
+nav ul li a:hover {
+    background: linear-gradient(90deg, rgba(138, 43, 226, 0.3) 0%, transparent 100%);
+    transform: translateX(5px);
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--highlight-color);
+    transform: scaleY(0);
+    transition: transform 0.2s ease;
+    transform-origin: bottom;
+}
+
+nav ul li a:hover::before {
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+nav ul li a i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+/* Active link styling */
+nav ul li a.active {
+    background: linear-gradient(90deg, rgba(138, 43, 226, 0.4) 0%, transparent 100%);
+    border-left: 3px solid var(--highlight-color);
+}
+
+nav ul li a.active i {
+    color: var(--highlight-color);
+}
+
+/* Cart icon badge */
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -3px;
+    background: var(--highlight-color);
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Notification badge (for inbox, etc) */
+.badge {
+    background: var(--highlight-color);
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Slide-in animation for menu items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+nav.show ul li {
+    animation: slideIn 0.3s ease forwards;
+}
+
+nav.show ul li:nth-child(1) { animation-delay: 0.1s; }
+nav.show ul li:nth-child(2) { animation-delay: 0.15s; }
+nav.show ul li:nth-child(3) { animation-delay: 0.2s; }
+nav.show ul li:nth-child(4) { animation-delay: 0.25s; }
+nav.show ul li:nth-child(5) { animation-delay: 0.3s; }
+nav.show ul li:nth-child(6) { animation-delay: 0.35s; }
+nav.show ul li:nth-child(7) { animation-delay: 0.4s; }
+nav.show ul li:nth-child(8) { animation-delay: 0.45s; }
+nav.show ul li:nth-child(9) { animation-delay: 0.5s; }
+
+/* User avatar dropdown */
+.user-menu {
+    position: relative;
+    margin: 5px 10px;
+}
+
+.user-menu img#userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--accent-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.user-menu img#userAvatar:hover,
+.user-menu img#userAvatar:focus {
+    box-shadow: 0 0 8px var(--highlight-color);
+    outline: none;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    min-width: 160px;
+    z-index: 1100;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.user-dropdown li {
+    list-style: none;
+}
+
+.user-dropdown li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.user-dropdown li a:hover {
+    background: var(--hover-color);
+    color: white;
+}
+
+/* Show dropdown when user-menu has .open */
+.user-menu.open .user-dropdown {
+    display: flex;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    nav {
+        left: 0;
+    }
+
+    .overlay {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --nav-width: 240px;
+    }
+    
+    nav ul li a {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-header {
+        font-size: 1.3rem;
+        padding: 10px;
+    }
+}

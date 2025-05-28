@@ -1,0 +1,251 @@
+:root {
+    --deep-indigo: #4b0082;
+    --royal-purple: #6a0dad;
+    --soft-violet: #9370db;
+    --lavender: #e6e6fa;
+    --light-lavender: #f8f5ff;
+    --orchid: #da70d6;
+    --dark-orchid: #9932cc;
+    --blue-violet: #8a2be2;
+    --medium-purple: #9370db;
+}
+
+/* Base Card Styles */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0 2rem 1rem; /* 1rem left margin pushes it right */
+    box-shadow: 0 4px 16px rgba(75, 0, 130, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+
+/* Add this */
+.card:hover {
+    transform: translateX(10px) translateY(-4px);
+    box-shadow: 0 6px 20px rgba(75, 0, 130, 0.15);
+}
+
+
+
+/* Flash Sales Header */
+.flash-sales-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--deep-indigo);
+    padding-bottom: 0.5rem;
+}
+
+.flash-sales-heading i {
+    color: var(--orchid);
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.flash-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: #4a3a6e;
+}
+
+.see-all {
+    color: var(--blue-violet);
+    font-weight: bold;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.see-all:hover {
+    color: var(--dark-orchid);
+    text-decoration: underline;
+}
+
+/* Flash Sales Container */
+.flash-scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 0;
+    margin: 0 -0.5rem;
+}
+
+.flash-scroll-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(50% - 1rem);
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 0.5rem 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.flash-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Product Cards */
+.product-card {
+    scroll-snap-align: start;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(75, 0, 130, 0.1);
+    transition: all 0.3s ease;
+    min-width: 0; /* Fixes flexbox overflow issues */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(75, 0, 130, 0.15);
+}
+
+.product-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    padding: 1rem;
+    background-color: var(--light-lavender);
+    border-bottom: 1px solid rgba(230, 230, 250, 0.5);
+}
+
+.product-card h4 {
+    color: var(--deep-indigo);
+    font-size: 1rem;
+    margin: 0.5rem 0 0.3rem;
+    padding: 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card .price {
+    color: var(--blue-violet);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0.2rem 0;
+    padding: 0 1rem;
+}
+
+.stock-indicator {
+    display: inline-block;
+    margin: 0.5rem 1rem 1rem;
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(to right, var(--royal-purple), var(--blue-violet));
+    border-radius: 20px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+/* Navigation Arrows */
+.flash-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, var(--blue-violet), var(--dark-orchid));
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(75, 0, 130, 0.3);
+}
+
+.flash-scroll-wrapper:hover .flash-arrow {
+    display: flex;
+}
+
+.flash-arrow:hover {
+    background: linear-gradient(to right, var(--dark-orchid), var(--blue-violet));
+    transform: translateY(-50%) scale(1.1);
+}
+
+.flash-arrow.left {
+    left: 10px;
+}
+
+.flash-arrow.right {
+    right: 10px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 576px) {
+    .flash-scroll-container {
+        grid-auto-columns: calc(33.333% - 1rem);
+    }
+    
+    .flash-sales-heading {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .flash-timer {
+        align-items: flex-end;
+    }
+}
+
+@media (min-width: 768px) {
+    .flash-scroll-container {
+        grid-auto-columns: calc(25% - 1rem);
+    }
+    
+    .flash-arrow {
+        display: flex;
+        opacity: 0.7;
+    }
+    
+    .flash-arrow:hover {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 992px) {
+    .flash-scroll-container {
+        grid-auto-columns: calc(20% - 1rem);
+    }
+    
+    .product-card img {
+        height: 180px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .flash-scroll-container {
+        grid-auto-columns: calc(16.666% - 1rem);
+    }
+}
+
+/* Countdown Timer Styles */
+#countdown {
+    font-weight: 600;
+    color: var(--royal-purple);
+    font-size: 0.95rem;
+}

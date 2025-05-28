@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .section {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+    .card {
+      flex: 1;
+      background: #fafafa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .card img {
+      max-width: 100px;
+    }
+    .price {
+      font-size: 1.5em;
+      color: #e67e22;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .proceed-btn {
+      background-color: #f39c12;
+      color: white;
+      font-size: 1.2em;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .proceed-btn:hover {
+      background-color: #e67e22;
+    }
+    .delivery-option {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Checkout</h2>
+  <div class="section">
+    <!-- Cart Summary -->
+    <div class="card">
+      <h3>Shopping Cart</h3>
+      <img src="https://via.placeholder.com/100x120.png?text=Roll-On" alt="Product">
+      <p><strong>Princess Paa Rose Anti-Perspirant - 50ml</strong></p>
+      <p class="price">GH₵ 9.83</p>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" value="1" min="1">
+    </div>
+
+    <!-- Delivery Details -->
+    <div class="card">
+      <h3>Delivery Details</h3>
+      <label for="region">Region</label>
+      <select id="region">
+        <option>Greater Accra</option>
+        <option>Ashanti</option>
+        <option>Western</option>
+      </select>
+
+      <label for="area">Area</label>
+      <select id="area">
+        <option>Abeka</option>
+        <option>Madina</option>
+        <option>Airport Residential</option>
+      </select>
+    </div>
+
+    <!-- Delivery Options -->
+    <div class="card">
+      <h3>Delivery Method</h3>
+      <div class="delivery-option">
+        <input type="radio" name="delivery" id="pickup" value="pickup" checked>
+        <label for="pickup">Pickup Station (GH₵ 11.00)</label>
+      </div>
+      <div class="delivery-option">
+        <input type="radio" name="delivery" id="door" value="door">
+        <label for="door">Door Delivery (GH₵ 25.00)</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Button -->
+  <button class="proceed-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+</div>
+
+<script>
+  function proceedToPayment() {
+    const qty = parseInt(document.getElementById("quantity").value);
+    const deliveryMethod = document.querySelector('input[name="delivery"]:checked').value;
+    const deliveryFee = deliveryMethod === "pickup" ? 11 : 25;
+    const total = (qty * 9.83) + deliveryFee;
+
+    alert("Total Amount: GH₵ " + total.toFixed(2));
+  }
+</script>
+
+</body>
+</html>
