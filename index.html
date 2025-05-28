@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.ico" sizes="96x96" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <a href="landing_dashboard.php">
+      <img src="images/kilnmart_logo.png" alt="Kiln Store Logo" class="logo">
+    </a>
+  </div>
+</header>
+
+<!-- Replace with static navbar if needed -->
+<!-- <?php include 'navbar.php'; ?> -->
+<nav class="navbar">
+    <!-- Add static nav links here -->
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="update-message" id="updateMessage" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+  <img id="messageImage" src="" alt="Promo Image" style="max-height: 70px; border-radius: 5px;" />
+  <span id="messageText"></span>
+</div>
+
+<div class="background" id="backgroundSlider">
+    <div class="container">
+        <div class="search-bar">
+            <form method="GET" action="#">
+                <input type="text" name="search" placeholder="Search for products or categories...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <h1>Welcome to Kiln Store</h1>
+        <p>Your online marketplace!</p>
+    </div>
+</div>
+
+<div class="card sale-card">
+    <h3>Available Products</h3>
+    <div class="product-grid">
+        <!-- Replace these static product cards with real content or JS-powered dynamic rendering -->
+        <div class="product-card">
+            <a href="#">
+                <img src="images/sample_product.jpg" alt="Sample Product">
+                <h4>Sample Product</h4>
+                <p>GH₵100.00</p>
+                <div class="stock-indicator" style="background-color: #2ecc71;">
+                    10 in stock
+                </div>
+            </a>
+        </div>
+
+        <div class="product-card">
+            <a href="#">
+                <img src="images/sample_product.jpg" alt="Sample Product">
+                <h4>Another Product</h4>
+                <p>GH₵50.00</p>
+                <div class="stock-indicator" style="background-color: #f1c40f;">
+                    3 in stock
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Flash Sales Placeholder -->
+<!-- <?php include 'flash_sales.php'; ?> -->
+<section class="flash-sales">
+    <h3>Flash Sales</h3>
+    <p>Exciting deals coming soon!</p>
+</section>
+
+<!-- Footer Placeholder -->
+<!-- <?php require 'footer.php'; ?> -->
+<footer>
+    <p>&copy; 2025 Kiln Store. All rights reserved.</p>
+</footer>
+
+<script>
+const messages = [
+  { text: "Father's Day is coming! Get gifts for your loved ones!", img: "images/fathers_day.png" },
+  { text: "Big sale coming soon! Stay tuned!", img: "images/big_sale.png" },
+  { text: "New arrivals! Check out the latest products.", img: "images/new_arrivals.png" },
+  { text: "Exclusive offers only for you, visit our store today!", img: "images/exclusive_offers.png" }
+];
+
+const messageImage = document.getElementById('messageImage');
+const messageText = document.getElementById('messageText');
+let currentMessageIndex = 0;
+
+function rotateMessage() {
+    const message = messages[currentMessageIndex];
+    messageImage.src = message.img;
+    messageImage.alt = message.text;
+    messageText.textContent = message.text;
+    currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+    setTimeout(rotateMessage, 5000);
+}
+rotateMessage();
+
+const backgroundImages = [
+    'sale.png', 'm.jpg', 'm1.png', 'm2.png', 'm3.png', 'm4.png', 'm6.png', 'm7.png'
+];
+let currentImageIndex = 0;
+const bgSlider = document.getElementById('backgroundSlider');
+
+function updateBackground() {
+    bgSlider.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+}
+updateBackground();
+setInterval(updateBackground, 5000);
+</script>
+</body>
+</html>
