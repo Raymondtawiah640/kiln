@@ -1,52 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="shortcut icon" href="logo.ico" sizes="96x96" type="image/x-icon">
-    <style>
-    /* Reset and base styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html, body {
-        width: 100%;
-        overflow-x: hidden; /* Prevent horizontal scroll */
-        font-family: Arial, sans-serif;
-    }
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="0; url= https://raymondtawiah640.github.io/kiln/" />
+  <link rel="shortcut icon" href="logo.ico" sizes="96x96" type="image/x-icon">
+  <style>
     body {
-        background: #f5f5f5;
-        line-height: 1.6;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 100px;
+      background: #f9f9f9;
     }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
+    h1 {
+      color: #333;
     }
-
-    /* Optional: Center page content */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    /* Responsive text sizes */
-    h1, h2, h3, p {
-        word-wrap: break-word;
-    }
-</style>
-
+  </style>
 </head>
 <body>
-    <?php
-    require 'landing_dashboard.php';
-    ?>
+  <h1>Redirecting to Kiln Store...</h1>
+  <p>If you are not redirected, <a href=" https://raymondtawiah640.github.io/kiln/">click here</a>.</p>
 </body>
 </html>
